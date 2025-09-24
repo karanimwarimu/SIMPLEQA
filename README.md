@@ -27,7 +27,7 @@ project/
 │       ├── webcss.css     # Example CSS file
 │       └── script.js      # Example JS file
 │
-└── model (to be generated automatically)
+└── model (to be added )
 
 ---
 
@@ -53,8 +53,7 @@ pip install -r requirements.txt
 
 ### 4. Add your model
 Download a Mistral 7B gguf model and place it inside a models/ folder (ignored by git).
-or it will be generated automatically on starting the app
-
+used for the project :  (mistral-7b-instruct-v0.1.Q4_K_M.gguf)
 Example:
 bash
 Copy code
