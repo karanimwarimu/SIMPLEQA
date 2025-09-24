@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SIMPLE QA </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='webcss.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>MK 0.4</h1>
+
+        <label for="prompt">Your Prompt:</label>
+        <textarea id="prompt" placeholder="Ask anything..." required></textarea>
+
+        <button onclick="sendPrompt()">Send</button>
+
+        <div id="loading" style="display:none;">Thinking...</div>
+        <label for="response">Response:</label>
+        <pre id="response"></pre>
+        <pre id="time"></pre>
+    </div>
+
+    <script>
+        async function sendPrompt() {
+            const prompt = document.getElementById('prompt').value.trim();
+            if (!prompt) return;
+
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('response').innerText = '';
+
+            try {
+                const res = await fetch('http://192.168.100.45:5000/ask', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ prompt })
+                });
+
+                const data = await res.json();
+                document.getElementById('response').innerText = data.response;
+                document.getElementById('time').textContent = data.time_taken;
+            } catch (error) {
+                document.getElementById('response').innerText = 'Error: ' + error.message;
+            } finally {
+                document.getElementById('loading').style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,17 +1,27 @@
 
 from flask import Flask, request, jsonify, render_template
-from text_gen_PROMAX import generate_text_promax
+#from text_gen_PROMAX import generate_text_promax
 import time
 import os 
 from flask_cors import CORS 
+from pathlib import Path 
 
 
-BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-TEMP_DIR = r"F:\BIG (II)\WEB\template"
-STATIC_DIR= r"F:\BIG (II)\WEB\static"
+# Base directory = directory where this file lives
+BASE_DIR = Path(__file__).resolve().parent
 
-app = Flask(__name__, static_folder=STATIC_DIR, template_folder=TEMP_DIR)
+# Go one level up, then into webpage/templates and webpage/static
+TEMPLATE_DIR = (BASE_DIR.parent / "webpage" / "templates").resolve()
+STATIC_DIR   = (BASE_DIR.parent / "webpage" / "static").resolve()
+
+# Flask app using absolute paths
+app = Flask(
+    __name__,
+    static_folder=str(STATIC_DIR),
+    template_folder=str(TEMPLATE_DIR)
+)
 CORS(app)
+
 @app.route('/')
 def index():
     return render_template('web.html')
