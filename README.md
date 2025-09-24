@@ -1,4 +1,4 @@
-# Local Mistral 7B Flask App 🚀
+# Local QB (Mistral 7B) Flask App 🚀
 
 This project runs a **local AI model (Mistral 7B)** with a **Flask web server**, and exposes an API endpoint for simple text generation.
 
