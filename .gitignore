@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pkl
+*.log
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE configs
+.vscode/
+.idea/
+
+# Model weights / large files
+*.bin
+*.gguf
+*.pt
+*.ckpt
+*.safetensors
+models/
+
+# Flask specific
+instance/
+*.db
+*.sqlite3
+
+# Cache
+.cache/
