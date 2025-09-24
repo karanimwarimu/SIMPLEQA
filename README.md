@@ -66,6 +66,14 @@ Copy code
 python app.py
 The app runs at http://your IP Address:5000.
 
+also ensure the webserver.html , the api points to the machine hosting the page , change to own ip address if using from othe rdevices :   
+           try {
+                const res = await fetch('http://127.0.0.1:5000/ask', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ prompt })
+                });
+
 ###6 . Access the API:
  send a prompt affter starting the server using python second_app.py and accesing the web page 
 
